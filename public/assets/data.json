@@ -1,0 +1,40 @@
+{
+  "items": [
+    {
+      "question": "What is Polymorphism?",
+      "answer": {
+        "text": "Polymorphism is an OOP concept where objects of different types can be accessed through the same interface. It allows methods to do different things based on the object it is acting upon.",
+        "points": [
+          "Method overriding",
+          "Method overloading",
+          "Run-time polymorphism via inheritance",
+          "Compile-time polymorphism via function signatures"
+        ]
+      }
+    },
+    {
+      "question": "What is Angular and why do we use it?",
+      "answer": {
+        "text": "Angular is a popular open-source web application framework led by Google. It provides a robust structure for creating dynamic, single-page applications.",
+        "points": [
+          "Two-way data binding",
+          "Dependency injection",
+          "Declarative templates",
+          "Component-based architecture"
+        ]
+      }
+    },
+    {
+      "question": "Why use components in Angular?",
+      "answer": {
+        "text": "Components are the building blocks of Angular apps — they encapsulate markup, styles, and behavior and make apps easier to develop and maintain.",
+        "points": [
+          "Reusability",
+          "Separation of concerns",
+          "Improved testability",
+          "Easier composition"
+        ]
+      }
+    }
+  ]
+}

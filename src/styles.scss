@@ -1,0 +1,54 @@
+/* You can add global styles to this file, and also import other style files */
+
+html, body { 
+	height: 100%; 
+	background-color: #303030;
+	color: #ffffff;
+}
+
+body { 
+	margin: 0; 
+	font-family: Roboto, "Helvetica Neue", sans-serif; 
+}
+
+// Force dark theme
+.mat-app-background {
+	background-color: #303030;
+}
+
+// Dark theme overrides
+.mat-mdc-card {
+	background-color: #424242 !important;
+	color: #ffffff !important;
+}
+
+.mat-mdc-card-title {
+	color: #ffffff !important;
+}
+
+.mat-mdc-card-content {
+	color: #e0e0e0 !important;
+}
+
+.mat-mdc-list-item {
+	color: #e0e0e0 !important;
+}
+
+// Custom scrollbar for dark theme
+::-webkit-scrollbar {
+	width: 10px;
+	height: 10px;
+}
+
+::-webkit-scrollbar-track {
+	background: #424242;
+}
+
+::-webkit-scrollbar-thumb {
+	background: #686868;
+	border-radius: 5px;
+}
+
+::-webkit-scrollbar-thumb:hover {
+	background: #7b7b7b;
+}

@@ -1,0 +1,66 @@
+<div class="qa-container">
+    <ng-container *ngIf="dataLoaded; else loading">
+        <ng-container *ngIf="current; else empty">
+            <mat-card class="question-card">
+                <mat-card-header>
+                    <mat-card-title>
+                        <mat-icon class="header-icon">help_outline</mat-icon>
+                        Question
+                    </mat-card-title>
+                </mat-card-header>
+                <mat-card-content>
+                    <p class="question-content">{{ current.question }}</p>
+                </mat-card-content>
+            </mat-card>
+
+            <mat-card class="answer-card">
+                <mat-card-header>
+                    <mat-card-title>
+                        <mat-icon class="header-icon">lightbulb</mat-icon>
+                        Answer
+                    </mat-card-title>
+                </mat-card-header>
+                <mat-card-content>
+                    <p class="answer-content" *ngIf="current.answer?.text">{{ current.answer.text }}</p>
+
+                    <mat-list role="list" *ngIf="current.answer?.points?.length">
+                        <mat-list-item role="listitem" *ngFor="let p of current.answer.points">
+                            <mat-icon class="list-icon">check_circle</mat-icon>
+                            {{ p }}
+                        </mat-list-item>
+                    </mat-list>
+                </mat-card-content>
+            </mat-card>
+
+            <div class="nav-controls">
+                <button mat-stroked-button color="primary" (click)="prev()" [disabled]="!hasPrev()" aria-label="Previous">
+                    <mat-icon>chevron_left</mat-icon>
+                    Previous
+                </button>
+
+                <div class="nav-position">{{ currentIndex + 1 }} / {{ items.length }}</div>
+
+                <button mat-stroked-button color="primary" (click)="next()" [disabled]="!hasNext()" aria-label="Next">
+                    Next
+                    <mat-icon>chevron_right</mat-icon>
+                </button>
+            </div>
+        </ng-container>
+
+        <ng-template #empty>
+            <mat-card>
+                <mat-card-content>
+                    <p>No question/answer data available.</p>
+                </mat-card-content>
+            </mat-card>
+        </ng-template>
+    </ng-container>
+
+    <ng-template #loading>
+        <mat-card>
+            <mat-card-content>
+                <p>Loading question…</p>
+            </mat-card-content>
+        </mat-card>
+    </ng-template>
+</div>

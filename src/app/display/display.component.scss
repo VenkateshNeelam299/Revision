@@ -1,0 +1,95 @@
+.qa-container {
+    max-width: 800px;
+    margin: 2rem auto;
+    padding: 1rem;
+    
+    @media (max-width: 600px) {
+        margin: 1rem;
+        padding: 0.5rem;
+    }
+}
+
+.question-card,
+.answer-card {
+    margin-bottom: 2rem;
+    transition: transform 0.2s ease;
+
+    &:hover {
+        transform: translateY(-2px);
+    }
+}
+
+.header-icon {
+    vertical-align: middle;
+    margin-right: 8px;
+}
+
+.list-icon {
+    color: #3f51b5;
+    margin-right: 8px;
+}
+
+mat-card-title {
+    display: flex;
+    align-items: center;
+    font-size: 1.25rem;
+    margin-bottom: 1rem;
+}
+
+.question-content,
+.answer-content {
+    font-size: 1.1rem;
+    line-height: 1.6;
+    margin: 1rem 0;
+    
+    @media (max-width: 600px) {
+        font-size: 1rem;
+    }
+}
+
+mat-list {
+    padding-top: 1rem;
+}
+
+mat-list-item {
+    height: auto !important;
+    margin-bottom: 8px;
+}
+
+// Custom theme overrides
+:host ::ng-deep {
+    .mat-mdc-card {
+        border-radius: 12px;
+    }
+
+    .mat-mdc-list-item {
+        display: flex;
+        align-items: center;
+    }
+}
+
+.nav-controls {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 16px;
+    margin-top: 12px;
+}
+
+.nav-position {
+    color: #e0e0e0;
+    font-weight: 600;
+}
+
+button[mat-stroked-button] {
+    border-color: rgba(255,255,255,0.12);
+    color: #fff;
+}
+
+@media (max-width: 480px) {
+    .nav-controls {
+        flex-direction: column;
+        gap: 8px;
+    }
+    .nav-position { margin: 6px 0; }
+}
