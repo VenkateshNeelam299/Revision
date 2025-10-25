@@ -3,12 +3,12 @@
     {
       "question": "What is Polymorphism?",
       "answer": {
-        "text": "Polymorphism is an OOP concept where objects of different types can be accessed through the same interface. It allows methods to do different things based on the object it is acting upon.",
+        "text": "Polymorphism basically enables you to invoke derived class methods through base class reference variable at runtime",
         "points": [
-          "Method overriding",
-          "Method overloading",
-          "Run-time polymorphism via inheritance",
-          "Compile-time polymorphism via function signatures"
+          "In the base class the method is declared as virtual and in derived class we override the same method.",
+          "The virtual keyword indicates the method can be overridden in any drived class.",
+          "A base class reference variable can point to a child class object.",
+          "so we can assign a child class object to a base class reference variable. because a child class is a specialization of its base class. meaning a child class has all the capabilities of its base class plus additional features that child class has."
         ]
       }
     },
