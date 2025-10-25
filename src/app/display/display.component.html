@@ -45,6 +45,17 @@
                     <mat-icon>chevron_right</mat-icon>
                 </button>
             </div>
+
+            <div class="action-buttons">
+                <button mat-raised-button color="primary" (click)="addNewQuestion()">
+                    <mat-icon>add</mat-icon>
+                    Add New Question
+                </button>
+                <button mat-stroked-button color="accent" (click)="exportQuestions()">
+                    <mat-icon>download</mat-icon>
+                    Export Questions
+                </button>
+            </div>
         </ng-container>
 
         <ng-template #empty>

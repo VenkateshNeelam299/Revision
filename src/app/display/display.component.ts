@@ -1,11 +1,13 @@
 import { Component, OnInit } from '@angular/core';
 import { CommonModule } from '@angular/common';
-import { HttpClientModule, HttpClient } from '@angular/common/http';
+import { HttpClientModule } from '@angular/common/http';
 import { MatCardModule } from '@angular/material/card';
 import { MatDividerModule } from '@angular/material/divider';
 import { MatListModule } from '@angular/material/list';
 import { MatIconModule } from '@angular/material/icon';
 import { MatButtonModule } from '@angular/material/button';
+import { Router } from '@angular/router';
+import { QuestionService } from '../question.service';
 
 @Component({
   selector: 'app-display',
@@ -20,47 +22,22 @@ import { MatButtonModule } from '@angular/material/button';
     MatButtonModule,
   ],
   templateUrl: './display.component.html',
-  styleUrl: './display.component.scss'
+  styleUrls: ['./display.component.scss']
 })
 export class DisplayComponent implements OnInit {
   items: Array<{ question: string; answer: { text: string; points: string[] } }> = [];
   currentIndex = 0;
   dataLoaded = false;
 
-  constructor(private http: HttpClient) {}
+  constructor(
+    private questionService: QuestionService,
+    private router: Router
+  ) {}
 
   ngOnInit(): void {
-    // Load QA data from assets/data.json
-    this.http.get<any>('assets/data.json').subscribe({
-      next: (res) => {
-        if (Array.isArray(res?.items)) {
-          this.items = res.items;
-        } else if (res?.question) {
-          // backward-compatible: single-item structure
-          this.items = [
-            {
-              question: res.question,
-              answer: res.answer || { text: '', points: [] },
-            },
-          ];
-        }
-
-        // ensure answer points arrays exist
-        this.items = this.items.map((it: any) => ({
-          question: it.question || '',
-          answer: {
-            text: it?.answer?.text || '',
-            points: Array.isArray(it?.answer?.points) ? it.answer.points : [],
-          },
-        }));
-
-        this.currentIndex = 0;
-        this.dataLoaded = true;
-      },
-      error: (err) => {
-        console.error('Failed to load QA data:', err);
-        this.dataLoaded = true; // avoid indefinite loading UI
-      },
+    this.questionService.questions$.subscribe(questions => {
+      this.items = questions;
+      this.dataLoaded = true;
     });
   }
 
@@ -82,6 +59,14 @@ export class DisplayComponent implements OnInit {
 
   next(): void {
     if (this.hasNext()) this.currentIndex++;
+  }
+
+  addNewQuestion(): void {
+    this.router.navigate(['/add']);
+  }
+
+  exportQuestions(): void {
+    this.questionService.exportQuestions();
   }
 
 }

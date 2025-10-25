@@ -41,19 +41,19 @@ mat-card-title {
     font-size: 1.1rem;
     line-height: 1.6;
     margin: 1rem 0;
+    white-space: pre-wrap;
+    word-wrap: break-word;
+    overflow-wrap: break-word;
+    max-width: 100%;
     
     @media (max-width: 600px) {
         font-size: 1rem;
+        padding: 0 8px;
     }
 }
 
 mat-list {
     padding-top: 1rem;
-}
-
-mat-list-item {
-    height: auto !important;
-    margin-bottom: 8px;
 }
 
 // Custom theme overrides
@@ -63,8 +63,48 @@ mat-list-item {
     }
 
     .mat-mdc-list-item {
-        display: flex;
-        align-items: center;
+        display: block !important;
+        width: 100%;
+        height: auto !important;
+        white-space: normal !important;
+        padding: 8px 0;
+        margin-bottom: 8px;
+
+        &::before {
+            display: none;
+        }
+
+        .mdc-list-item__content {
+            white-space: normal !important;
+            height: auto !important;
+            min-height: 48px;
+            padding: 8px 0;
+        }
+
+        .mdc-list-item__primary-text {
+            white-space: normal !important;
+            height: auto !important;
+            display: block !important;
+        }
+
+        .mat-mdc-list-item-unscoped-content {
+            display: block !important;
+            white-space: normal !important;
+        }
+    }
+
+    .mat-mdc-card-content {
+        white-space: pre-wrap;
+        word-wrap: break-word;
+        overflow-wrap: break-word;
+    }
+
+    .mat-mdc-list-base {
+        .mat-mdc-list-item {
+            .mat-mdc-list-item-content {
+                display: block;
+            }
+        }
     }
 }
 
@@ -86,10 +126,28 @@ button[mat-stroked-button] {
     color: #fff;
 }
 
+.action-buttons {
+    display: flex;
+    justify-content: center;
+    gap: 16px;
+    margin-top: 24px;
+}
+
 @media (max-width: 480px) {
     .nav-controls {
         flex-direction: column;
         gap: 8px;
     }
-    .nav-position { margin: 6px 0; }
+    .nav-position { 
+        margin: 6px 0; 
+    }
+    
+    mat-list-item {
+        padding: 0 8px;
+    }
+
+    .action-buttons {
+        flex-direction: column;
+        padding: 0 16px;
+    }
 }
