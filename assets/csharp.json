@@ -1,0 +1,26 @@
+{
+  "items": [
+    {
+      "question": "What is Polymorphism in C#?",
+      "answer": {
+        "text": "Polymorphism allows objects to be treated as instances of their parent class, enabling different behaviors for the same interface.",
+        "points": [
+          "Method overriding",
+          "Virtual and override keywords",
+          "Interface-based polymorphism"
+        ]
+      }
+    },
+    {
+      "question": "Explain async/await in C#.",
+      "answer": {
+        "text": "async and await simplify asynchronous programming by allowing code to be written in a synchronous style while running asynchronously.",
+        "points": [
+          "Task-based asynchronous pattern",
+          "Avoids blocking threads",
+          "Works with ConfigureAwait and SynchronizationContext"
+        ]
+      }
+    }
+  ]
+}

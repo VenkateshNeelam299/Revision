@@ -1,0 +1,15 @@
+{
+  "items": [
+    {
+      "question": "What is .NET Core?",
+      "answer": {
+        "text": ".NET Core is a cross-platform, high-performance framework for building modern, cloud-based, internet-connected applications.",
+        "points": [
+          "Cross-platform (Windows, Linux, macOS)",
+          "Modular and lightweight",
+          "Supports microservices and containers"
+        ]
+      }
+    }
+  ]
+}
