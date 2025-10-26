@@ -19,7 +19,7 @@ export class QuestionService {
   questions$ = this.questionsSubject.asObservable();
 
   constructor(private http: HttpClient) {
-    this.loadQuestions();
+    // Do not auto-load at construction; consumers will call loadCourse(courseId)
   }
 
   private hasLocalStorage(): boolean {
@@ -30,16 +30,21 @@ export class QuestionService {
     }
   }
 
-  private loadQuestions() {
-    // Load questions from both sources and combine them
+  /**
+   * Load questions for a specific course. courseId maps to assets/{courseId}.json
+   * If courseId is not provided, fall back to 'data.json'.
+   */
+  loadCourse(courseId?: string): void {
     const localQuestions = this.getLocalQuestions();
-    
-    this.http.get<{ items: QAItem[] }>('assets/data.json').subscribe({
+    const path = courseId ? `assets/${courseId}.json` : 'assets/data.json';
+
+    this.http.get<{ items: QAItem[] }>(path).subscribe({
       next: (res) => {
         const allQuestions = [...(res.items || []), ...localQuestions];
         this.questionsSubject.next(allQuestions);
       },
-      error: () => {
+      error: (err) => {
+        console.warn('Failed to load course data from', path, err);
         // If JSON fails to load, still show local questions
         this.questionsSubject.next(localQuestions);
       }

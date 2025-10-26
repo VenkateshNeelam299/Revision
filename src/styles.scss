@@ -52,3 +52,18 @@ body {
 ::-webkit-scrollbar-thumb:hover {
 	background: #7b7b7b;
 }
+
+/* Sidenav layout styles */
+.app-sidenav-container {
+	height: 100vh;
+}
+
+.app-sidenav {
+	width: 220px;
+	background: #2b2b2b;
+	color: #fff;
+}
+
+.app-content {
+	padding: 16px;
+}

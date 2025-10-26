@@ -6,7 +6,7 @@ import { MatDividerModule } from '@angular/material/divider';
 import { MatListModule } from '@angular/material/list';
 import { MatIconModule } from '@angular/material/icon';
 import { MatButtonModule } from '@angular/material/button';
-import { Router } from '@angular/router';
+import { Router, ActivatedRoute, ParamMap } from '@angular/router';
 import { QuestionService } from '../question.service';
 
 @Component({
@@ -31,12 +31,20 @@ export class DisplayComponent implements OnInit {
 
   constructor(
     private questionService: QuestionService,
-    private router: Router
+    private router: Router,
+    private route: ActivatedRoute
   ) {}
 
   ngOnInit(): void {
+    // Listen to route changes and load appropriate course data
+    this.route.paramMap.subscribe((params: ParamMap) => {
+      const courseId = params.get('id') || 'angular';
+      this.questionService.loadCourse(courseId);
+    });
+
     this.questionService.questions$.subscribe(questions => {
       this.items = questions;
+      this.currentIndex = 0;
       this.dataLoaded = true;
     });
   }

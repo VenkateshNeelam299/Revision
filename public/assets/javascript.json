@@ -1,0 +1,26 @@
+{
+  "items": [
+    {
+      "question": "What is closure in JavaScript?",
+      "answer": {
+        "text": "A closure is a function that has access to its outer (enclosing) function scope even after the outer function has returned.",
+        "points": [
+          "Preserves variables in scope",
+          "Used for data privacy",
+          "Common in callbacks and functional patterns"
+        ]
+      }
+    },
+    {
+      "question": "Explain event loop briefly.",
+      "answer": {
+        "text": "The event loop handles the execution of asynchronous callbacks by processing the call stack and task queues.",
+        "points": [
+          "Call stack and message queue",
+          "Microtasks (Promises) vs macrotasks",
+          "Single-threaded concurrency model"
+        ]
+      }
+    }
+  ]
+}

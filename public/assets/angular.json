@@ -1,0 +1,15 @@
+{
+  "items": [
+    {
+      "question": "What is Angular and why do we use it?",
+      "answer": {
+        "text": "Angular is a platform and framework for building single-page client applications using HTML and TypeScript.",
+        "points": [
+          "Component-based architecture",
+          "Two-way data binding",
+          "Dependency injection"
+        ]
+      }
+    }
+  ]
+}
