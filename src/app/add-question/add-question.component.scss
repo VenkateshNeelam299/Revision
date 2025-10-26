@@ -1,0 +1,49 @@
+.add-question-container {
+  max-width: 800px;
+  margin: 2rem auto;
+  padding: 1rem;
+}
+
+.full-width {
+  width: 100%;
+  margin-bottom: 1rem;
+}
+
+.points-container {
+  margin: 1rem 0;
+}
+
+.points-container h3 {
+  color: #e0e0e0;
+  margin-bottom: 1rem;
+}
+
+.point-row {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  margin-bottom: 8px;
+}
+
+.point-input {
+  flex: 1;
+}
+
+.form-actions {
+  display: flex;
+  justify-content: flex-end;
+  gap: 1rem;
+  margin-top: 2rem;
+}
+
+@media (max-width: 600px) {
+  .add-question-container {
+    margin: 1rem;
+    padding: 0;
+  }
+
+  .point-row {
+    flex-direction: column;
+    align-items: stretch;
+  }
+}
