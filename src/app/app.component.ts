@@ -6,6 +6,7 @@ import { MatListModule } from '@angular/material/list';
 import { MatToolbarModule } from '@angular/material/toolbar';
 import { MatIconModule } from '@angular/material/icon';
 import { MatButtonModule } from '@angular/material/button';
+import { NgIf } from '@angular/common';
 
 @Component({
   selector: 'app-root',
@@ -13,6 +14,7 @@ import { MatButtonModule } from '@angular/material/button';
   imports: [
     RouterOutlet,
     RouterLink,
+    NgIf,
     DisplayComponent,
     MatSidenavModule,
     MatListModule,
@@ -28,4 +30,9 @@ import { MatButtonModule } from '@angular/material/button';
 })
 export class AppComponent {
   title = 'Revision';
+  isExpanded = false;
+
+  toggleSidebar() {
+    this.isExpanded = !this.isExpanded;
+  }
 }

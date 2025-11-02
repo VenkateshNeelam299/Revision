@@ -92,12 +92,31 @@ export class QuestionService {
       const blob = new Blob([data], { type: 'application/json' });
       const url = window.URL.createObjectURL(blob);
       const link = document.createElement('a');
+      link.style.display = 'none';
+      document.body.appendChild(link);
       link.href = url;
       link.download = 'updated_questions.json';
-      link.click();
+
+      // Create and dispatch a click event (works better across browsers)
+      const clickEvent = new MouseEvent('click', {
+        view: window,
+        bubbles: true,
+        cancelable: false
+      });
+      link.dispatchEvent(clickEvent);
+
+      // Clean up
+      document.body.removeChild(link);
       window.URL.revokeObjectURL(url);
     } catch (e) {
-      console.warn('Failed to export questions', e);
+      console.error('Failed to export questions', e);
+      // Fallback for older browsers
+      try {
+        window.location.href = 'data:application/json;charset=utf-8,' + encodeURIComponent(data);
+      } catch (fallbackError) {
+        console.error('Fallback export method also failed', fallbackError);
+        alert('Unable to export questions. Please try using a different browser.');
+      }
     }
   }
 }

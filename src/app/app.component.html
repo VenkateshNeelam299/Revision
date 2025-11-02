@@ -1,17 +1,37 @@
 <mat-sidenav-container class="app-sidenav-container">
-	<mat-sidenav mode="side" opened class="app-sidenav">
-		<mat-toolbar color="primary">Courses</mat-toolbar>
+	<mat-sidenav mode="side" [opened]="true" [class.expanded]="isExpanded" class="app-sidenav">
+		<mat-toolbar color="primary">
+			<span *ngIf="isExpanded">Courses</span>
+		</mat-toolbar>
 		<mat-nav-list>
-			<a mat-list-item routerLink="/course/angular"><mat-icon>rocket</mat-icon> Angular</a>
-			<a mat-list-item routerLink="/course/javascript"><mat-icon>code</mat-icon> JavaScript</a>
-			<a mat-list-item routerLink="/course/csharp"><mat-icon>memory</mat-icon> C#</a>
-			<a mat-list-item routerLink="/course/dotnetcore"><mat-icon>cloud</mat-icon> .NET Core</a>
-			<a mat-list-item routerLink="/add"><mat-icon>add</mat-icon> Add Question</a>
+			<a mat-list-item routerLink="/course/angular">
+				<mat-icon>rocket</mat-icon>
+				<span *ngIf="isExpanded">Angular</span>
+			</a>
+			<a mat-list-item routerLink="/course/javascript">
+				<mat-icon>code</mat-icon>
+				<span *ngIf="isExpanded">JavaScript</span>
+			</a>
+			<a mat-list-item routerLink="/course/csharp">
+				<mat-icon>memory</mat-icon>
+				<span *ngIf="isExpanded">C#</span>
+			</a>
+			<a mat-list-item routerLink="/course/dotnetcore">
+				<mat-icon>cloud</mat-icon>
+				<span *ngIf="isExpanded">.NET Core</span>
+			</a>
+			<a mat-list-item routerLink="/add">
+				<mat-icon>add</mat-icon>
+				<span *ngIf="isExpanded">Add Question</span>
+			</a>
 		</mat-nav-list>
 	</mat-sidenav>
 
 	<mat-sidenav-content>
 		<mat-toolbar color="primary">
+			<button mat-icon-button (click)="toggleSidebar()">
+				<mat-icon>menu</mat-icon>
+			</button>
 			<span>Revision</span>
 		</mat-toolbar>
 
